@@ -154,29 +154,44 @@ brief delay in processing high- resolution images
             );
 
             /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
-var imageData = context.getImageData(0, 0, 600, 500);
-      /* Grabs the pixel data from the first canvas */
-var data = imageData.data; 
-  /* Accesses the underlying array of pixel colors */
-for (var i = 0; i < data.length; i += 4) { 
-  /*  Loops through every pixel (RGBA) */
-  var blue = data[i + 2];
-  /* Extracts the blue value (3rd item in the pixel group) */
-  data[i] = 0;
-  /* Sets Red to zero */
-  data[i + 1] = 0;
-  /* Sets Green to zero */
-  data[i + 2] = blue; 
-  /* Keeps the Blue value exactly as it was */
-}
-context2.putImageData(imageData, 0, 0);
-          };
-console.log("Blue filter applied successfully");
-          img.src = reader.result;
-        };
-        reader.readAsDataURL(file);
-      });
-    };
+    var imageData = context.getImageData(0, 0, 600, 500);
+            /* Grabs the pixel data from the first canvas */
+
+    var data = imageData.data;           
+            /* Accesses the underlying array of pixel colors */
+
+    for (var i = 0; i < data.length; i += 4) { 
+          /*  Loops through every pixel (RGBA) */'
+            
+    var blue = data[i + 2];
+          /* Extracts the blue value (3rd item in the pixel group) */
+      
+    data[i] = 0;
+        /* Sets Red to zero */
+      
+    data[i + 1] = 0;
+        /* Sets Green to zero */
+      
+    data[i + 2] = blue; 
+        /* Keeps the Blue value exactly as it was */
+        }
+            
+    context2.putImageData(imageData, 0, 0);
+    console.log("Blue filter applied successfully");
+        } // end of img.onload
+          
+    img.src = reader.result;
+        } // end of reader onload
+        
+    reader.readAsDataURL(file);
+        } // this is the end of the if statement checking that the file is an image
+      else        
+     {
+        // this is what happens if the original file is not an image file
+        messageDiplayArea.innerhTML = "File not supported."
+      } // end of the else statement if the file is NOT an image
+    }); // end of the fileInput.addEventListener function
+    } // end of the window.onload function
   </script>
 </head>
 
@@ -197,13 +212,15 @@ console.log("Blue filter applied successfully");
         />
       </div>
       <div id="messageDisplayArea"></div>
+      
       <!-- First canvas image will go here -->
       <canvas
         id="myCanvas"
         width="600"
         height="500"
         style="border:1px solid #d3d3d3"
-      ></canvas>
+      ></canvas
+         </script> /* This script initates the canvas and puts the text on the canvas "MyCanvas" */
       <!-- Second canvas image will go here -->
       <canvas
         id="dataCanvas"
@@ -211,6 +228,8 @@ console.log("Blue filter applied successfully");
         height="500"
         style="border:1px solid #d3d3d3"
       ></canvas>
+  </script>
+      var canvas2 = document.getElementById('dataCanvas')
     </div>
     <!-- /content -->
     <div data-role="footer" data-position="fixed">
