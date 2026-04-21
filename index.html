@@ -27,7 +27,7 @@
   Brief Description of Goal of Code:
 To show basic image processing using the HTML 5 Canvas. To allow the user ro upload an image to be process onto a canvas.
 The script will loop through the RGBA pixel data which isolates blue color by setting red and green intesity value to zero. 
-This result in bliur filtered image which will be displayed on a second canvas for comparison.
+This result in blue filtered image which will be displayed on a second canvas for comparison.
 Known Issues:
 brief delay in processing high- resolution images
 -->
@@ -171,6 +171,7 @@ for (var i = 0; i < data.length; i += 4) {
 }
 context2.putImageData(imageData, 0, 0);
           };
+console.log("Blue filter applied successfully");
           img.src = reader.result;
         };
         reader.readAsDataURL(file);
